@@ -1,0 +1,19 @@
+Package: aci
+Type: Package
+Title: Advocacy Coalition Index
+Version: 0.1.0
+Author: Hao Liang <hl893@cornell.edu>;
+        Keiichi Satoh <keiichi.satoh@r.hit-u.ac.jp>
+Maintainer: Hao Liang <hl893@cornell.edu>;
+        Keiichi Satoh <keiichi.satoh@r.hit-u.ac.jp>
+Description: A package to develop ACI related functions, 
+    including calculation and simulation.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    statnet
