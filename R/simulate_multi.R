@@ -116,5 +116,5 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
               main = "平均出次数ごとのTimeのバラつき")
     }
     #return
-    invisible(eval_dat)
+    return(eval_dat)
   }}
