@@ -35,7 +35,7 @@ create.network <- function(N, Belief, Degree){
     }
 
     # アクターの選好関数
-    Attractiveness <- give.attractiveness.score(Baseline.Probability = 0.2)
+    Attractiveness <- give.attra.score(beta = 0.2)
 
     # egoがalterとエッジを結ぶ確率
     Prob <- 1/(1+exp((-1*Attractiveness)))
