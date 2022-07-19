@@ -22,6 +22,6 @@ a \code{list} object of multiple average degrees used.}
 Simulation: ACI simulation based on random level of average degree.
 }
 \author{
-Hao Liang \url{hl893@cornell.edu},
+Hao Liang \url{hl893@cornell.edu}
 Keiichi Satoh \url{keiichi.satoh@r.hit-u.ac.jp}
 }

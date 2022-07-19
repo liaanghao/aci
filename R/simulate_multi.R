@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' @author Hao Liang \url{hl893@cornell.edu},
+#' @author Hao Liang \url{hl893@cornell.edu}
 #' Keiichi Satoh \url{keiichi.satoh@r.hit-u.ac.jp}
 sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
 
@@ -43,7 +43,6 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
       Whole.ACI[m] <- ACI.Out[[m]]$whole["whole.ACI"]
     }
 
-    #return
     invisible(ACI.Out)
     return(head(Whole.ACI))
     hist(Whole.ACI)
@@ -51,10 +50,9 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
   }else if(class(degree) == "list"){
 
     #network formation for lists
-    Degree.pattern <- length(degree)
     Sim_Degree   <- c()
 
-    for(n in 1:Degree.pattern){
+    for(n in 1:length(degree)){
       for(m in 1:nsim){
         out <- create.network(N = actor, Belief = belief, Degree = degree[[n]])
         Sim_Matrix[[nsim*(n-1) + m]] <- out$mat
@@ -72,6 +70,7 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
     whole.homo <- c()
     CCH <- c()
     time <- c()
+
     for(m in 1:length(Sim_Matrix)){
       Average.Degree[m] <-  mean(rowSums(Sim_Matrix[[m]]))
       ACI.Out[[m]] <- aci(matrix = Sim_Matrix[[m]],
@@ -92,9 +91,6 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
       CCH = CCH,
       time = time
     )
-    m <- 1
-    ACI.Out[[m]]$whole
-    eval_dat$ACI
 
     if(plot == TRUE){
       # plot
@@ -103,18 +99,19 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
               ylab = "ACI", xlab = "Average degree",
               main = "平均出次数ごとのACIのバラつき")
       boxplot(eval_dat$cross ~ eval_dat$Average.Degree,
-              ylab = "ACI", xlab = "Average degree",
+              ylab = "Cross tie score", xlab = "Average degree",
               main = "平均出次数ごとのCross tie scoreのバラつき")
       boxplot(eval_dat$homo ~ eval_dat$Average.Degree,
-              ylab = "ACI", xlab = "Average degree",
+              ylab = "Homo tie score", xlab = "Average degree",
               main = "平均出次数ごとのHomo tie scoreのバラつき")
       boxplot(eval_dat$CCH ~ eval_dat$Average.Degree,
-              ylab = "ACI", xlab = "Average degree",
+              ylab = "CCH", xlab = "Average degree",
               main = "平均出次数ごとのCCHのバラつき")
       boxplot(eval_dat$time ~ eval_dat$Average.Degree,
-              ylab = "ACI", xlab = "Average degree",
+              ylab = "Time", xlab = "Average degree",
               main = "平均出次数ごとのTimeのバラつき")
     }
-    #return
-    return(eval_dat)
-  }}
+
+    invisible(eval_dat)
+  }
+  }
