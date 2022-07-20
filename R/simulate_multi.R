@@ -71,7 +71,7 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
     CCH <- c()
     time <- c()
 
-    for(m in 1:length(Sim_Matrix)){
+    invisible(for(m in 1:length(Sim_Matrix)){
       Average.Degree[m] <-  mean(rowSums(Sim_Matrix[[m]]))
       ACI.Out[[m]] <- aci(matrix = Sim_Matrix[[m]],
                           policy.score = Sim_Belief[[m]],
@@ -81,10 +81,10 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
       whole.homo[m] <- ACI.Out[[m]]$whole["whole.homo"]
       CCH[m] <- ACI.Out[[m]]$whole["CCH"]
       time[m] <- Sim_Time[[m]]
-    }
+    })
 
     eval_dat <- data.frame(
-      Average.Degree = Average.Degree,
+      avedeg = Average.Degree,
       ACI = Whole.ACI,
       cross = whole.cross,
       homo = whole.homo,
@@ -95,19 +95,19 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
     if(plot == TRUE){
       # plot
       par(family = "HiraKakuPro-W3", mfrow=c(2,3))
-      boxplot(eval_dat$ACI ~ eval_dat$Average.Degree,
+      boxplot(eval_dat$ACI ~ eval_dat$avedeg,
               ylab = "ACI", xlab = "Average degree",
               main = "平均出次数ごとのACIのバラつき")
-      boxplot(eval_dat$cross ~ eval_dat$Average.Degree,
+      boxplot(eval_dat$cross ~ eval_dat$avedeg,
               ylab = "Cross tie score", xlab = "Average degree",
               main = "平均出次数ごとのCross tie scoreのバラつき")
-      boxplot(eval_dat$homo ~ eval_dat$Average.Degree,
+      boxplot(eval_dat$homo ~ eval_dat$avedeg,
               ylab = "Homo tie score", xlab = "Average degree",
               main = "平均出次数ごとのHomo tie scoreのバラつき")
-      boxplot(eval_dat$CCH ~ eval_dat$Average.Degree,
+      boxplot(eval_dat$CCH ~ eval_dat$avedeg,
               ylab = "CCH", xlab = "Average degree",
               main = "平均出次数ごとのCCHのバラつき")
-      boxplot(eval_dat$time ~ eval_dat$Average.Degree,
+      boxplot(eval_dat$time ~ eval_dat$avedeg,
               ylab = "Time", xlab = "Average degree",
               main = "平均出次数ごとのTimeのバラつき")
     }
