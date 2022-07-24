@@ -4,7 +4,7 @@
 \alias{aci}
 \title{Calculating Advocacy Coalition Index}
 \usage{
-aci(matrix, policy.score, alpha = 0.5)
+aci(matrix, policy.score, alpha = 0.5, print = FALSE)
 }
 \arguments{
 \item{matrix}{An advocacy coalition network matrix.}
@@ -12,6 +12,8 @@ aci(matrix, policy.score, alpha = 0.5)
 \item{policy.score}{A numeric object of belief scores.}
 
 \item{alpha}{threshold uses to decide the cut off value.}
+
+\item{print}{whether to print subsystem-level ACI output in Console. Default is \code{FALSE}.}
 }
 \value{
 Advocacy Coalition Index in three levels:

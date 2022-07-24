@@ -3,6 +3,7 @@
 #' @param matrix An advocacy coalition network matrix.
 #' @param policy.score A numeric object of belief scores.
 #' @param alpha threshold uses to decide the cut off value.
+#' @param print whether to print subsystem-level ACI output in Console. Default is \code{FALSE}.
 #'
 #' @return Advocacy Coalition Index in three levels:
 #'     Subsystem-level, Coalition-level, and actor-level.
@@ -10,8 +11,9 @@
 #' @examples
 aci <- function(matrix,
                 policy.score,
-                alpha = 0.5){
-  # imput data
+                alpha = 0.5,
+                print = FALSE){
+  # impute data
   Y <- matrix
   a <- policy.score
   diag(Y) <- 0
@@ -75,6 +77,8 @@ aci <- function(matrix,
                  preference.agreement.matrix.X = X)
 
   ## return the result
-  print(result$whole)
+  if(print==TRUE){
+    print(result$whole)
+  }
   invisible(result)
 }
