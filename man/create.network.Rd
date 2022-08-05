@@ -4,7 +4,7 @@
 \alias{create.network}
 \title{Simulation: Create Simulating Networks}
 \usage{
-create.network(N, Belief, Degree)
+create.network(N, Belief, Degree, plot = FALSE)
 }
 \arguments{
 \item{N}{The number of nodes.}
@@ -12,6 +12,8 @@ create.network(N, Belief, Degree)
 \item{Belief}{The belief scores of each nodes.}
 
 \item{Degree}{The target degree.}
+
+\item{plot}{Plot the network. Default is \code{FALSE}.}
 }
 \value{
 \code{time}: time used for creating the network,

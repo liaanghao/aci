@@ -4,7 +4,7 @@
 \alias{sim.degree}
 \title{Simulation: ACI simulation based on random level of average degree.}
 \usage{
-sim.degree(nsim, actor, belief, degree, plot = FALSE)
+sim.degree(nsim, actor, belief, degree, plot = FALSE, xlab)
 }
 \arguments{
 \item{nsim}{The number of simulation.}
@@ -17,6 +17,8 @@ sim.degree(nsim, actor, belief, degree, plot = FALSE)
 a \code{list} object of multiple average degrees used.}
 
 \item{plot}{Only applies when \code{degree} is a \code{list} object.}
+
+\item{xlab}{Assign \code{ave.deg} or \code{density} as xlab when \code{plot = TRUE}.}
 }
 \description{
 Simulation: ACI simulation based on random level of average degree.

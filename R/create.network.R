@@ -1,17 +1,21 @@
 #' Simulation: Create Simulating Networks
 #' @description Network simulation based on agent-based models (ABM).
+#'
 #' @param N The number of nodes.
 #' @param Belief The belief scores of each nodes.
 #' @param Degree The target degree.
+#' @param plot Plot the network. Default is \code{FALSE}.
 #'
 #' @return \code{time}: time used for creating the network,
 #'         \code{mat}: the imported network matrix,
 #'         \code{Belief}: the belief scores of each nodes,
 #'         \code{Degree}: the target degree.
+#' @import igraph
 #' @export
 #'
 #' @examples
-create.network <- function(N, Belief, Degree){
+#'
+create.network <- function(N, Belief, Degree, plot = FALSE){
   #　アクターID
   Act.ID <- as.character(1:N)
   # DegreeにAct.IDを付与する
@@ -61,6 +65,14 @@ create.network <- function(N, Belief, Degree){
               mat  = mat,
               Belief = Belief,
               Degree = Degree)
+
+  if(plot == TRUE){
+    g <- graph_from_adjacency_matrix(mat,
+                                     mode = "undirected",
+                                     diag = FALSE)
+    plot(g)
+  }
+
   # リターン
   return(out)
 }

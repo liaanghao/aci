@@ -6,6 +6,7 @@
 #' @param degree A \code{numeric} object of average degree used or
 #' a \code{list} object of multiple average degrees used.
 #' @param plot Only applies when \code{degree} is a \code{list} object.
+#' @param xlab Assign \code{ave.deg} or \code{density} as xlab when \code{plot = TRUE}.
 #'
 #' @return
 #' @export
@@ -13,7 +14,13 @@
 #' @examples
 #' @author Hao Liang \url{hl893@cornell.edu}
 #' Keiichi Satoh \url{keiichi.satoh@r.hit-u.ac.jp}
-sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
+sim.degree <- function(nsim, actor, belief, degree, plot = FALSE, xlab){
+
+  if(plot == TRUE){
+    if(xlab != "ave.deg" | xlab != "density"){
+      stop("xlab should be either average degree (ave.deg) or density (density)")
+    }
+  }
 
   # set seed
   set.seed(666)
@@ -85,6 +92,7 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
 
     eval_dat <- data.frame(
       avedeg = Average.Degree,
+      density = round(avedig.dens.switch(nsim, Ave.Degree = avedeg, mode = "graph"),3),
       ACI = Whole.ACI,
       cross = whole.cross,
       homo = whole.homo,
@@ -92,21 +100,38 @@ sim.degree <- function(nsim, actor, belief, degree, plot = FALSE){
       time = time
     )
 
+# plot
     if(plot == TRUE){
-      # plot
       par(family = "HiraKakuPro-W3", mfrow=c(2,2))
-      boxplot(eval_dat$ACI ~ eval_dat$avedeg,
-              ylab = "ACI", xlab = "Average degree",
-              main = "平均出次数ごとのACIのバラつき")
-      boxplot(eval_dat$cross ~ eval_dat$avedeg,
-              ylab = "Cross tie score", xlab = "Average degree",
-              main = "平均出次数ごとのCross tie scoreのバラつき")
-      boxplot(eval_dat$homo ~ eval_dat$avedeg,
-              ylab = "Homo tie score", xlab = "Average degree",
-              main = "平均出次数ごとのHomo tie scoreのバラつき")
-      boxplot(eval_dat$CCH ~ eval_dat$avedeg,
-              ylab = "CCH", xlab = "Average degree",
-              main = "平均出次数ごとのCCHのバラつき")
+      if(xlab == "ave.deg"){
+        boxplot(eval_dat$ACI ~ eval_dat$avedeg,
+                ylab = "ACI", xlab = "Average degree",
+                main = "平均出次数ごとのACIのバラつき")
+        boxplot(eval_dat$cross ~ eval_dat$avedeg,
+                ylab = "Cross tie score", xlab = "Average degree",
+                main = "平均出次数ごとのCross tie scoreのバラつき")
+        boxplot(eval_dat$homo ~ eval_dat$avedeg,
+                ylab = "Homo tie score", xlab = "Average degree",
+                main = "平均出次数ごとのHomo tie scoreのバラつき")
+        boxplot(eval_dat$CCH ~ eval_dat$avedeg,
+                ylab = "CCH", xlab = "Average degree",
+                main = "平均出次数ごとのCCHのバラつき")
+
+      }else if (xlab == "density"){
+
+        boxplot(eval_dat$ACI ~ eval_dat$density,
+                ylab = "ACI", xlab = "Average degree",
+                main = "密度ごとのACIのバラつき")
+        boxplot(eval_dat$cross ~ eval_dat$density,
+                ylab = "Cross tie score", xlab = "Average degree",
+                main = "密度ごとのCross tie scoreのバラつき")
+        boxplot(eval_dat$homo ~ eval_dat$density,
+                ylab = "Homo tie score", xlab = "Average degree",
+                main = "密度ごとのHomo tie scoreのバラつき")
+        boxplot(eval_dat$CCH ~ eval_dat$density,
+                ylab = "CCH", xlab = "Average degree",
+                main = "密度ごとのCCHのバラつき")
+      }
     }
 
     invisible(eval_dat)
