@@ -13,6 +13,7 @@ aci <- function(matrix,
                 policy.score,
                 alpha = 0.5,
                 print = FALSE){
+
   # impute data
   Y <- matrix
   a <- policy.score
@@ -31,7 +32,6 @@ aci <- function(matrix,
 
   # distance(D)
   D <- abs(Y-X)
-
 
   # differentiate the submatrix
   D.cross <- D
@@ -66,10 +66,12 @@ aci <- function(matrix,
                     act.ACI.in     = act.ACI.in,
                     act.cross.in  = act.cross.in,
                     act.homo.in   = act.homo.in)
+
   whole <- c(whole.ACI     = whole.ACI,
              whole.cross  = whole.cross,
              whole.homo   = whole.homo,
              CCH = whole.cross / whole.homo)
+
   result <- list(act=act,
                  whole=whole,
                  coalition.mat = coalition.mat,

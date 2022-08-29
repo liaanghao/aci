@@ -4,14 +4,14 @@
 \alias{select.agent}
 \title{Simulation: Select agent at random}
 \usage{
-select.agent(Act.ID = NULL, Target.Degree, mat)
+select.agent(Target.Degree, mat, Act.ID)
 }
 \arguments{
-\item{Act.ID}{An ID list of actors.}
-
 \item{Target.Degree}{The number of degree.}
 
 \item{mat}{A network matrix.}
+
+\item{Act.ID}{An ID list of actors.}
 }
 \description{
 Simulation: Select agent at random

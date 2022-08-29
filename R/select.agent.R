@@ -8,16 +8,8 @@
 #' @export
 #'
 #' @examples
-select.agent <- function(Act.ID = NULL, Target.Degree, mat){
-  # Target.Degreeとmatの長さがあっているかをチェック
-  if(length(Target.Degree)!=nrow(mat)){
-    stop("The length of Target degree differs from the matrix")
-  }
-  # アクターのIDリストを作成する（未入力の場合）
-  if(is.null(Act.ID)){
-    Act.ID <- as.character(1:nrow(mat))
-    names(Target.Degree) <- Act.ID
-  }
+select.agent <- function(Target.Degree, mat, Act.ID){
+
   # まだ意図したdegreeに達していないAgentsのリスト
   Current.degree <- rowSums(mat)
   ego.candid <- Act.ID[Current.degree < Target.Degree]
@@ -29,11 +21,10 @@ select.agent <- function(Act.ID = NULL, Target.Degree, mat){
     # 対象となるエゴを一つ選ぶ
     ego <- sample(ego.candid, 1)
     # 対象となるalterを選ぶ
-    alter <- sample(Act.ID[Act.ID!=ego], 1)
+    alter <- sample(Act.ID[Act.ID!=ego & mat[ego, ]!=1], 1)
     # 対象となる組み合わせを返す
     out <- c(ego = ego, alter = alter)
   }
-
   # リターン
   return(out)
 }

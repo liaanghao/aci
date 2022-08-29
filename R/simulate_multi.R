@@ -14,7 +14,7 @@
 #' @examples
 #' @author Hao Liang \url{hl893@cornell.edu}
 #' Keiichi Satoh \url{keiichi.satoh@r.hit-u.ac.jp}
-sim.degree <- function(nsim, actor, belief, degree, plot = FALSE, xlab){
+sim.aci <- function(nsim, actor, belief, degree, plot = FALSE, xlab){
 
   if(plot == TRUE){
     if(xlab != "ave.deg" | xlab != "density"){

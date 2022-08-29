@@ -4,22 +4,58 @@
 \alias{create.network}
 \title{Simulation: Create Simulating Networks}
 \usage{
-create.network(N, Belief, Degree, plot = FALSE)
+create.network(
+  n,
+  Belief,
+  Degree,
+  base.prob = 0.05,
+  homoph = 0,
+  recip = 0,
+  popul = 0,
+  activ = 0,
+  transiv = 0,
+  common.target = 0,
+  common.source = 0,
+  display.time = FALSE,
+  display.plot = FALSE,
+  max.time = 1e+05
+)
 }
 \arguments{
-\item{N}{The number of nodes.}
+\item{n}{The number of nodes.}
 
 \item{Belief}{The belief scores of each nodes.}
 
 \item{Degree}{The target degree.}
 
-\item{plot}{Plot the network. Default is \code{FALSE}.}
+\item{base.prob}{see \code{give.attra.score}.}
+
+\item{homoph}{see \code{give.attra.score}.}
+
+\item{recip}{see \code{give.attra.score}.}
+
+\item{popul}{see \code{give.attra.score}.}
+
+\item{activ}{see \code{give.attra.score}.}
+
+\item{transiv}{see \code{give.attra.score}.}
+
+\item{common.target}{see \code{give.attra.score}.}
+
+\item{common.source}{see \code{give.attra.score}.}
+
+\item{display.time}{display time for simulation, default is \code{False}.}
+
+\item{display.plot}{display simulation results in plot, default is \code{False}.}
+
+\item{max.time}{maximum time for simulation, default is \code{100000}.}
 }
 \value{
 \code{time}: time used for creating the network,
         \code{mat}: the imported network matrix,
         \code{Belief}: the belief scores of each nodes,
         \code{Degree}: the target degree.
+        \code{Record}: the record of edge formation.
 }
 \description{
 Network simulation based on agent-based models (ABM).

@@ -4,12 +4,47 @@
 \alias{give.attra.score}
 \title{Attribute Attractive Scores}
 \usage{
-give.attra.score(beta = 0.05)
+give.attra.score(
+  ego,
+  alter,
+  mat,
+  attribute.mat,
+  base.prob = 0,
+  homoph = 0,
+  recip = 0,
+  popul = 0,
+  activ = 0,
+  transiv = 0,
+  common.target = 0,
+  common.source = 0
+)
 }
 \arguments{
-\item{beta}{baseline probability. Default is set to as 0.05.}
+\item{ego}{Ego node.}
+
+\item{alter}{Alter node.}
+
+\item{mat}{Network matrix.}
+
+\item{attribute.mat}{Attribute matrix.}
+
+\item{base.prob}{Base probability.}
+
+\item{homoph}{Homophilious score.}
+
+\item{recip}{Reciprocity score.}
+
+\item{popul}{Popularity score.}
+
+\item{activ}{Activity score.}
+
+\item{transiv}{Transitivity score.}
+
+\item{common.target}{Common target.}
+
+\item{common.source}{Common source.}
 }
 \description{
 Attribute attractive scores between two nodes to
-decide how likely they are going to form a tie.
+decide how likely in forming a tie.
 }
