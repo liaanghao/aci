@@ -21,28 +21,28 @@
 #'
 #' @examples
 sim.aci <- function(n.sim, n, Belief, Degree, base.prob,
-                    homoph, recip, popul, activ, transiv,
-                    common.target, common.source,
-                    display.time = FALSE, display.plot = TRUE, display.sim.time = TRUE){
+                    homoph = 0, recip = 0, popul = 0, activ = 0, transiv = 0,
+                    common.target = 0, common.source = 0,
+                    display.time = FALSE, display.plot = FALSE, display.sim.time = FALSE){
 
   # network formation
-  Sim_Matrix  <- array(0, dim = c(n, n, n.Sim))
+  Sim_Matrix  <- array(0, dim = c(n, n, n.sim))
   Sim_Belief <- matrix(0, n.sim, length(Belief), byrow = T)
   Sim_Time   <- rep(0, n.sim)
-  Sim_X.record  <- vector(mode ="list", length = n.sim)
+  Sim_X.record  <- vector(mode ="list", length =  n.sim)
+  simunet <- list()
 
-  for(m in 1:N.Sim){
+  for(m in 1: n.sim){
     out <- create.network(
-      n = n, Belief = Belief, Degree = Degree,
+      n= n, Belief = Belief, Degree = Degree,
       base.prob = base.prob, homoph = homoph, recip = recip,
       popul = popul, activ = activ, common.target = common.target,
       common.source = common.source, display.time = display.time,
       display.plot = display.plot)
-
-    Sim_Matrix[ , ,m] <- out$mat
-    Sim_Belief[m, ] <- out$Belief
-    Sim_Time[m]     <- out$time
-    Sim_X.record[[m]] <- out$Record
+    simunet[[m]] <- list(Sim_Matrix = Sim_Matrix[ , ,m] <- out$mat,
+                         Sim_Belief = Sim_Belief[m, ] <- out$Belief,
+                         Sim_Time = Sim_Time[m]     <- out$time,
+                         Sim_X.record = Sim_X.record[[m]] <- out$Record)
 
     if(display.sim.time == TRUE){
       print(paste0("current simulation: ", m, " (",round(m/N.Sim*100,1),"%)"))
@@ -53,12 +53,17 @@ sim.aci <- function(n.sim, n, Belief, Degree, base.prob,
   ACI.Out <- vector(mode = "list", length = n.sim)
   Whole.ACI <- rep(0, n.sim)
   for(m in 1:n.sim){
-    ACI.Out[[m]] <- aci(matrix = Sim_Matrix[,,m],
-                        policy.score = Sim_Belief[m, ],
-                        alpha = 0.5)
-    Whole.ACI[m] <- ACI.Out[[m]]$whole["whole.ACI"]
+    ACI.Out[[m]] <- list(ACI = aci(matrix = Sim_Matrix[,,m],
+                                   policy.score = Sim_Belief[m, ],
+                                   alpha = 0.5),
+                         Sim_Matrix = Sim_Matrix[ , ,m] <- out$mat,
+                         Sim_Belief = Sim_Belief[m, ] <- out$Belief,
+                         Sim_Time = Sim_Time[m]     <- out$time,
+                         Sim_X.record = Sim_X.record[[m]] <- out$Record)
+
+    Whole.ACI[m] <- ACI.Out[[m]]$ACI$whole["whole.ACI"]
   }
 
   hist(Whole.ACI)
-
+  invisible(ACI.Out)
 }

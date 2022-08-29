@@ -145,26 +145,28 @@ create.network <- function(
 
   # プロット
   if(display.plot==TRUE){
-    list(
+    par(family = "HiraKakuPro-W3", mfrow=c(2,2))
       gplot(out$mat, vertex.col = Belief,
-            main = "1. network"),
+            main = "1. network")
+
       plot(x = Record$time,
            y = cumsum(Record$Decision)/sum(Record$Decision),
            type = "l",
            xlab = "time", ylab = "% of ties realized",
-           main = "2. time"),
+           main = "2. time")
+
       plot(x = Record$time,
            y = cumsum(Record$score)/seq_along(Record$score),
            xlab = "time", ylab = "score",
            type = "l",
-           main = "3. Cum. ave. attract. score"),
+           main = "3. Cum. ave. attract. score")
+
       plot(x = Record$time,
            y = Record$prob,
            xlab = "time", ylab = "Prob",
            ylim = c(0,1),
            type = "l",
            main = "4. Prob. of making ties")
-    )
   }
   # リターン
   return(out)
