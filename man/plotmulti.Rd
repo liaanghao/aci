@@ -4,10 +4,14 @@
 \alias{plotmulti}
 \title{Visual comparison among multiple simulation}
 \usage{
-plotmulti(eval_dat)
+plotmulti(eval_dat, x, xlab)
 }
 \arguments{
 \item{eval_dat}{evaluation data}
+
+\item{x}{x index}
+
+\item{xlab}{xlab}
 }
 \description{
 Visual comparison among multiple simulation

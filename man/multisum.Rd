@@ -4,10 +4,14 @@
 \alias{multisum}
 \title{Summary}
 \usage{
-multisum(list)
+multisum(list, x, xlab)
 }
 \arguments{
 \item{list}{a list of object}
+
+\item{x}{see \code{plotmulti}.}
+
+\item{xlab}{see \code{plotmulti}.}
 }
 \description{
 Summary

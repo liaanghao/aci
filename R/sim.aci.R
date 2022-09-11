@@ -58,8 +58,7 @@ sim.aci <- function(n.sim, n, Belief, Degree, base.prob,
   time <- rep(0, n.sim)
 
   for(m in 1:n.sim){
-    ACI.Out[[m]] <- list(Parameters = c(n = n, n.sim = n.sim,  Belief = Belief,
-                                        Degree = Degree, base.prob = base.prob,
+    ACI.Out[[m]] <- list(Parameters = c(n = n, n.sim = n.sim, base.prob = base.prob,
                                         homoph = homoph, recip = recip, popul = popul,
                                         activ = activ, transiv = transiv,
                                         common.target = common.target,
