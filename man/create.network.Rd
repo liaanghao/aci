@@ -18,6 +18,7 @@ create.network(
   common.source = 0,
   display.time = FALSE,
   display.plot = FALSE,
+  plotfamily = NA,
   max.time = 1e+05
 )
 }
@@ -47,6 +48,8 @@ create.network(
 \item{display.time}{display time for simulation, default is \code{False}.}
 
 \item{display.plot}{display simulation results in plot, default is \code{False}.}
+
+\item{plotfamily}{Define a family of fonts for plot.}
 
 \item{max.time}{maximum time for simulation, default is \code{100000}.}
 }

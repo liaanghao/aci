@@ -15,6 +15,7 @@
 #' @param display.plot display simulation results in plot, default is \code{False}.
 #' @param max.time maximum time for simulation, default is \code{100000}.
 #' @param Degree The target degree.
+#' @param plotfamily Define a family of fonts for plot.
 #'
 #' @return \code{time}: time used for creating the network,
 #'         \code{mat}: the imported network matrix,
@@ -22,7 +23,6 @@
 #'         \code{Degree}: the target degree.
 #'         \code{Record}: the record of edge formation.
 #' @export
-#'
 #' @examples
 #'
 create.network <- function(
@@ -37,7 +37,9 @@ create.network <- function(
     common.source = 0,
     display.time = FALSE,
     display.plot = FALSE,
+    plotfamily = NA,
     max.time = 100000){
+
 
   #　アクターID
   Act.ID <- as.character(1:n)
@@ -145,7 +147,7 @@ create.network <- function(
 
   # プロット
   if(display.plot==TRUE){
-    par(family = "HiraKakuPro-W3", mfrow=c(2,2))
+    par(family = plotfamily, mfrow=c(2,2))
       gplot(out$mat, vertex.col = Belief,
             main = "1. network")
 
