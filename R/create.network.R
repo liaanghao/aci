@@ -198,6 +198,10 @@ create.network <- function(
   record.by.time$X.common.target <- tapply(record$X.common.target, record$time, mean)
   record.by.time$X.common.source <- tapply(record$X.common.source, record$time, mean)
   record.by.time$X.proximity <- tapply(record$X.proximity, record$time, mean)
+
+  # report parameters
+
+
   # アウトプット
   # sparce matrixをもとのマトリクスに戻すか
   if(sparseM.output == TRUE){
@@ -208,7 +212,13 @@ create.network <- function(
               target.outdegree = target.outdegree,
               time = time,
               record = record,
-              record.by.time = record.by.time)
+              record.by.time = record.by.time,
+              parameters = c(belief = belief, spatial.coord = spatial.coord,
+                             target.outdegree = target.outdegree,target.density = target.density,
+                             trial.limit = trial.limit, base.prob = base.prob,homoph = homoph,
+                             recip = recip, popul = popul,activ = activ, transiv = transiv,
+                             common.target = common.target,common.source = common.source,
+                             proximity = proximity))
   # プロット
   if(display.plot==TRUE){
     list(

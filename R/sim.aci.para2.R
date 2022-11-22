@@ -67,8 +67,9 @@ sim.aci.para2 <- function(n.sim,core, seed = NULL,
   time <- rep(0, n.sim)
 
   for(m in 1:n.sim){
-    ACI.Out[[m]] <- list(Simulated_Network = f1[[m]]$mat,
-                         Parameters = f1[[m]],
+    ACI.Out[[m]] <- list(n=n, n.sim = n.sim,
+                         Simulated_Network = f1[[m]]$mat,
+                         simulation_result = f1[[m]],
                          ACI = aci(matrix = f1[[m]]$mat,
                                    policy.score = f1[[m]]$belief,
                                    alpha = 0.5),
@@ -86,7 +87,7 @@ sim.aci.para2 <- function(n.sim,core, seed = NULL,
   stopImplicitCluster()
   stopCluster(cl)
 
-  par(family = "", mfrow=c(2,3))
+  par(mfrow=c(2,3))
   hist(Whole.ACI)
   hist(Whole.cross)
   hist(Whole.homo)
