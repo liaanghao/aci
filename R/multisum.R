@@ -37,14 +37,14 @@ multisum <- function(list){
       whole.cross[m] <- sa[[m]]$ACI$whole["whole.cross"]
       whole.homo[m] <- sa[[m]]$ACI$whole["whole.homo"]
       CCH[m] <- sa[[m]]$ACI$whole["CCH"]
-      homoph[m] <- sa[[m]]$simulation_result$parameters["X.homoph"]
+      homoph[m] <- sa[[m]]$simulation_result$parameters["homoph"]
       base.prob[m] <- sa[[m]]$simulation_result$parameters["base.prob"]
-      recip[m] <- sa[[m]]$simulation_result$parameters["X.recip"]
-      popul[m] <- sa[[m]]$simulation_result$parameters["X.popul"]
-      activ[m] <- sa[[m]]$simulation_result$parameters["X.activ"]
-      transiv[m] <- sa[[m]]$simulation_result$parameters["X.transiv"]
-      common.target[m] <- sa[[m]]$simulation_result$parameters["X.common.target"]
-      common.source[m] <- sa[[m]]$simulation_result$parameters["X.common.source"]
+      recip[m] <- sa[[m]]$simulation_result$parameters["recip"]
+      popul[m] <- sa[[m]]$simulation_result$parameters["popul"]
+      activ[m] <- sa[[m]]$simulation_result$parameters["activ"]
+      transiv[m] <- sa[[m]]$simulation_result$parameters["transiv"]
+      common.target[m] <- sa[[m]]$simulation_result$parameters["common.target"]
+      common.source[m] <- sa[[m]]$simulation_result$parameters["common.source"]
       n[m] <- sa[[m]]$n
       n.sim[m] <- sa[[m]]$n.sim
     }
