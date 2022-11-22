@@ -2,17 +2,17 @@
 % Please edit documentation in R/select.agent.R
 \name{select.agent}
 \alias{select.agent}
-\title{Simulation: Select agent at random}
+\title{Randomly select a pair of ego and alter for network simulation}
 \usage{
-select.agent(Target.Degree, mat, Act.ID)
+select.agent(target.outdegree, mat, actID)
 }
 \arguments{
-\item{Target.Degree}{The number of degree.}
+\item{target.outdegree}{The outdegree for selected ego.}
 
 \item{mat}{A network matrix.}
 
-\item{Act.ID}{An ID list of actors.}
+\item{actID}{the ID of actors.}
 }
 \description{
-Simulation: Select agent at random
+Randomly select a pair of ego and alter for network simulation
 }
