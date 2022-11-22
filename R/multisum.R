@@ -31,20 +31,20 @@ multisum <- function(list){
     n.sim <- c()
 
     for (m in 1:length(sa)) {
-      avedeg[m] <- mean(rowSums(sa[[m]]$Sim_Matrix))
+      avedeg[m] <- mean(rowSums(sa[[m]]$Simulated_Network))
       time[m] <- sa[[m]]$Sim_Time
       whole.aci[m] <- sa[[m]]$ACI$whole["whole.ACI"]
       whole.cross[m] <- sa[[m]]$ACI$whole["whole.cross"]
       whole.homo[m] <- sa[[m]]$ACI$whole["whole.homo"]
       CCH[m] <- sa[[m]]$ACI$whole["CCH"]
-      homoph[m] <- sa[[m]]$Parameters["homoph"]
-      base.prob[m] <- sa[[m]]$Parameters["base.prob"]
-      recip[m] <- sa[[m]]$Parameters["recip"]
-      popul[m] <- sa[[m]]$Parameters["popul"]
-      activ[m] <- sa[[m]]$Parameters["activ"]
-      transiv[m] <- sa[[m]]$Parameters["transiv"]
-      common.target[m] <- sa[[m]]$Parameters["common.target"]
-      common.source[m] <- sa[[m]]$Parameters["common.source"]
+      homoph[m] <- mean(sa[[m]]$Parameters["X.homoph"])
+      base.prob[m] <- mean(sa[[m]]$Parameters["base.prob"])
+      recip[m] <- mean(sa[[m]]$Parameters["X.recip"])
+      popul[m] <- mean(sa[[m]]$Parameters["X.popul"])
+      activ[m] <- mean(sa[[m]]$Parameters["X.activ"])
+      transiv[m] <- mean(sa[[m]]$Parameters["X.transiv"])
+      common.target[m] <- mean(sa[[m]]$Parameters["X.common.target"])
+      common.source[m] <- mean(sa[[m]]$Parameters["X.common.source"])
       n[m] <- sa[[m]]$Parameters["n"]
       n.sim[m] <- sa[[m]]$Parameters["n.sim"]
     }
