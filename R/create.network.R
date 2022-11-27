@@ -102,7 +102,7 @@ create.network <- function(
   }else if(ncol(spatial.coord)<=2){
     spatial.dist <- as.matrix(dist(spatial.coord))
   }else{
-    spatial.dist <- spatial.dist
+    spatial.dist <- spatial.coord
   }
   # BeliefからAttribute matrixを作成
   attribute.mat <- 1-as.matrix(dist(belief, method = "euclidean"))
