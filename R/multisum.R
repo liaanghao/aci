@@ -37,6 +37,7 @@ multisum <- function(list){
       whole.cross[m] <- sa[[m]]$ACI$whole["whole.cross"]
       whole.homo[m] <- sa[[m]]$ACI$whole["whole.homo"]
       CCH[m] <- sa[[m]]$ACI$whole["CCH"]
+<<<<<<< Updated upstream
       homoph[m] <- sa[[m]]$simulation_result$parameters["homoph"]
       base.prob[m] <- sa[[m]]$simulation_result$parameters["base.prob"]
       recip[m] <- sa[[m]]$simulation_result$parameters["recip"]
@@ -47,6 +48,18 @@ multisum <- function(list){
       common.source[m] <- sa[[m]]$simulation_result$parameters["common.source"]
       n[m] <- sa[[m]]$n
       n.sim[m] <- sa[[m]]$n.sim
+=======
+      homoph[m] <- mean(sa[[m]]$Parameters["X.homoph"])
+      base.prob[m] <- mean(sa[[m]]$Parameters["base.prob"])
+      recip[m] <- mean(sa[[m]]$Parameters["X.recip"])
+      popul[m] <- mean(sa[[m]]$Parameters["X.popul"])
+      activ[m] <- mean(sa[[m]]$Parameters["X.activ"])
+      transiv[m] <- mean(sa[[m]]$Parameters["X.transiv"])
+      common.target[m] <- mean(sa[[m]]$Parameters["X.common.target"])
+      common.source[m] <- mean(sa[[m]]$Parameters["X.common.source"])
+      n[m] <- sa[[m]]$Parameters["n"]
+      n.sim[m] <- sa[[m]]$Parameters["n.sim"]
+>>>>>>> Stashed changes
     }
     eval_dat <- data.frame(n = n, n.sim = n.sim, avedeg = avedeg,
                            ACI = whole.aci, cross = whole.cross, homo = whole.homo,

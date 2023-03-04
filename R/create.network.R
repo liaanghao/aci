@@ -144,7 +144,7 @@ create.network <- function(
     time <- time + 1
     # アクターの選好計算-------------------------
     # 現状のmatrix値をもとにgasのXを計算する
-    X <- gas.X(mat = mat,
+    X <- gas.X2(mat = mat,
                attribute.mat = attribute.mat,
                base.prob = base.prob,
                spatial.dist = spatial.dist)
