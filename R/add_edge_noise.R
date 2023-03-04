@@ -86,7 +86,7 @@ add_edge_noise <- function(
   }
 
 # example
-mat <- matrix(0, 5, 5)
-mat <- add_edge_noise(mat = mat, n_noise_edge = 5)
-add_edge_noise(mat = mat, noise_prop = 0.05,
-               noise_type = FUN_rounding = round)
+#mat <- matrix(0, 5, 5)
+#mat <- add_edge_noise(mat = mat, n_noise_edge = 5)
+#add_edge_noise(mat = mat, noise_prop = 0.05,
+#               noise_type = FUN_rounding = round)
