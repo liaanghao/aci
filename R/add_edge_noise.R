@@ -2,13 +2,17 @@
 #'
 #' @param mat an adjacency matrix.
 #' @param noise_type a character: "add", "delete", "rewire", or "add.or.delete" (default)
-#' @param n_noise_edge a integer that indicates the number of edges to be "noised". Detaulf is NULL.
-#' @param noise_prop proportion of the noised edge calculated from the imput matrix.
+#' @param n_noise_edge a integer that indicates the number of edges to be "noised". Default is NULL.
+#' @param noise_prop proportion of the noised edge calculated from the input matrix.
 #' @param directed logical indicating if the graph is treated as directed network (default is TRUE)
-#' @param FUN_rounding Function for the rounding of the number of n_noise_edge. Detaulf is "round", but it can be replaced with other functions.
+#' @param FUN_rounding Function for the rounding of the number of n_noise_edge. Default is "round", but it can be replaced with other functions.
 #' @param seed an integer for the seed (Default is NULL).
 #' @return an adjacency matrix with some noise of edges added.
 #' @examples
+#' mat <- matrix(0, 5, 5)
+#' mat <- add_edge_noise(mat = mat, n_noise_edge = 5)
+#' add_edge_noise(mat = mat, noise_prop = 0.05,
+#'                noise_type = FUN_rounding = round)
 
 
 add_edge_noise <- function(
@@ -85,8 +89,4 @@ add_edge_noise <- function(
   mat
   }
 
-# example
-#mat <- matrix(0, 5, 5)
-#mat <- add_edge_noise(mat = mat, n_noise_edge = 5)
-#add_edge_noise(mat = mat, noise_prop = 0.05,
-#               noise_type = FUN_rounding = round)
+

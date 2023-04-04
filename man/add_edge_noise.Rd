@@ -19,13 +19,13 @@ add_edge_noise(
 
 \item{noise_type}{a character: "add", "delete", "rewire", or "add.or.delete" (default)}
 
-\item{n_noise_edge}{a integer that indicates the number of edges to be "noised". Detaulf is NULL.}
+\item{n_noise_edge}{a integer that indicates the number of edges to be "noised". Default is NULL.}
 
-\item{noise_prop}{proportion of the noised edge calculated from the imput matrix.}
+\item{noise_prop}{proportion of the noised edge calculated from the input matrix.}
 
 \item{directed}{logical indicating if the graph is treated as directed network (default is TRUE)}
 
-\item{FUN_rounding}{Function for the rounding of the number of n_noise_edge. Detaulf is "round", but it can be replaced with other functions.}
+\item{FUN_rounding}{Function for the rounding of the number of n_noise_edge. Default is "round", but it can be replaced with other functions.}
 
 \item{seed}{an integer for the seed (Default is NULL).}
 }
@@ -34,4 +34,10 @@ an adjacency matrix with some noise of edges added.
 }
 \description{
 Add a random noise to edges
+}
+\examples{
+mat <- matrix(0, 5, 5)
+mat <- add_edge_noise(mat = mat, n_noise_edge = 5)
+add_edge_noise(mat = mat, noise_prop = 0.05,
+               noise_type = FUN_rounding = round)
 }
