@@ -238,11 +238,15 @@ abm_barabasi <- function(
   if(sparseM.output == TRUE){
     mat <- as(mat, "sparseMatrix")
   }
+  beta <- list(intercept = intercept, homophiliy = homoph, reciprocity = recip,
+               popularity = popul, activity = activ, transitivity=transiv,
+               common.target = common.target, common.source=common.source, proximity=proximity)
   out <- list(mat  = mat,
               belief = belief,
               target.outdegree = target.outdegree,
               record = record,
-              score.record = score.record)
+              score.record = score.record,
+              beta = beta)
   # リターン
   return(out)
 }
